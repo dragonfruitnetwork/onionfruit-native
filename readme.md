@@ -18,3 +18,6 @@ var process = new Process(new ProcessStartInfo
 
 process.Start();
 ```
+
+### License
+The project is licensed under the MIT Licence. Please note the Tor is distributed under a different license, which has been provided with the binaries
