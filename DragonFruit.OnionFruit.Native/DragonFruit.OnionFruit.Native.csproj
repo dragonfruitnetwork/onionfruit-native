@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyTitle>OnionFruit Native</AssemblyTitle>
+        <Title>OnionFruit Native Libraries</Title>
+        <Description>Native libraries for OnionFruit</Description>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
+        <PackageId>DragonFruit.OnionFruit.Native</PackageId>
+        <PackageTags>dragonfruit onionfruit native</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="runtimes\**\native\*">
+            <Pack>true</Pack>
+            <PackagePath>runtimes</PackagePath>
+        </None>
+        <None Include="../readme.md">
+            <Pack>true</Pack>
+            <PackagePath>.</PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>
