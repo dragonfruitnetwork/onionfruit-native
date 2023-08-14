@@ -16,14 +16,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="runtimes\**\native\*">
-            <Pack>true</Pack>
-            <PackagePath>runtimes</PackagePath>
-        </None>
-        <None Include="../readme.md">
-            <Pack>true</Pack>
-            <PackagePath>.</PackagePath>
-        </None>
+        <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="."/>
+        <None Include="$(SolutionDir)readme.md" Pack="true" PackagePath="."/>
+        <None Include="runtimes\**\native\*" Pack="true" PackagePath="runtimes"/>
     </ItemGroup>
 
 </Project>
