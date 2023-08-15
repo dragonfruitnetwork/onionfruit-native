@@ -1,18 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project>
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
-        <AssemblyTitle>OnionFruit Native</AssemblyTitle>
-        <Title>OnionFruit Native Libraries</Title>
-        <Description>Native libraries for OnionFruit</Description>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <TargetFramework>netstandard1.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup>
         <IsPackable>true</IsPackable>
+        <PackageIcon>icon.png</PackageIcon>
+        <Title>OnionFruit Native Libraries</Title>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
-        <PackageId>DragonFruit.OnionFruit.Native</PackageId>
         <PackageTags>dragonfruit onionfruit native</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Description>Native libraries for OnionFruit</Description>
     </PropertyGroup>
 
     <ItemGroup>

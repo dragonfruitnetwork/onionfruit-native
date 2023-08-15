@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="$(SolutionDir)Common.Build.props"/>
+
+    <PropertyGroup>
+        <PackageId>DragonFruit.OnionFruit.Native.osx</PackageId>
+    </PropertyGroup>
+
+</Project>
