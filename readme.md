@@ -1,22 +1,55 @@
 # OnionFruit Native Libraries
-[![Latest Nuget](https://img.shields.io/nuget/v/dragonfruit.onionfruit.native?logo=nuget)](https://nuget.org/packages/dragonfruit.onionfruit.native)
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+Provides native libraries from the Tor website as pacakges for supported operating systems
 
-Provides native libraries from the Tor website along with a helper class for locating said binaries.
+[![](https://img.shields.io/nuget/v/dragonfruit.onionfruit.native.win?label=win&logo=nuget)](https://nuget.org/packages/dragonfruit.onionfruit.native.win)
+[![](https://img.shields.io/nuget/v/dragonfruit.onionfruit.native.osx?label=osx&logo=nuget)](https://nuget.org/packages/dragonfruit.onionfruit.native.osx)
 
-### Example usage
+### Example Locator Script
+> When publishing, the correct binaries are copied directly to the output folder. If in debug or non-publish build, the files can be found under `runtimes/{rid}/{arch}/native`
+
 ```csharp
-using System.Diagnostics;
-using DragonFruit.OnionFruit.Native;
-
-var process = new Process(new ProcessStartInfo
+public static class TorResolver
 {
-    FileName = TorResolver.LocateTorExecutable(),
-    Arguments = "-f ./path/to/torrc",
-    UseShellExecute = false
-});
+    /// <summary>
+    /// Attempts to locate the tor executable, returning the full path if found.
+    /// </summary>
+    /// <remarks>
+    /// Currently not supported on linux platforms
+    /// </remarks>
+    [UnsupportedOSPlatform("ios")]
+    [UnsupportedOSPlatform("linux")]
+    [UnsupportedOSPlatform("android")]
+    public static string LocateTorExecutable()
+    {
+        var filename = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "tor.exe" : "tor";
+        return EnumeratePotentialDirectories().Select(targetDir => Path.Combine(targetDir, filename)).FirstOrDefault(File.Exists);
+    }
 
-process.Start();
+    private static IEnumerable<string> EnumeratePotentialDirectories()
+    {
+        // app dir (in case of published program)
+        yield return AppDomain.CurrentDomain.BaseDirectory;
+
+        // native executable location (debug/local build)
+        string platformName;
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            platformName = "win";
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            platformName = "osx";
+        }
+        else
+        {
+            throw new PlatformNotSupportedException("OnionFruit NativeLibs are currently only available on Windows and macOS");
+        }
+
+        var genericRid = $"{platformName}-{RuntimeInformation.OSArchitecture.ToString().ToLowerInvariant()}";
+        yield return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "runtimes", genericRid, "native");
+    }
+}
 ```
 
 ### License
