@@ -9,13 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: "6.0.x"
-
-      - name: Restore
-        run: dotnet restore
+      - uses: actions/checkout@v4
 
       - name: Build
         run: dotnet build -c Release -v normal -p:Version=${{ github.ref_name }}

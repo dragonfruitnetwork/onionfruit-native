@@ -3,6 +3,7 @@
     <Import Project="$(SolutionDir)Common.Build.props"/>
     
     <PropertyGroup>
+        <Version>13.5.4</Version>
         <PackageId>DragonFruit.OnionFruit.Native.win</PackageId>
     </PropertyGroup>
 
