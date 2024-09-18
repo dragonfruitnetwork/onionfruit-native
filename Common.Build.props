@@ -18,7 +18,7 @@
     <ItemGroup>
         <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="."/>
         <None Include="$(SolutionDir)readme.md" Pack="true" PackagePath="."/>
-        <None Include="runtimes\**\native\*" Pack="true" PackagePath="runtimes"/>
+        <None Include="runtimes\**\native\**\*" Pack="true" PackagePath="runtimes"/>
     </ItemGroup>
 
 </Project>
