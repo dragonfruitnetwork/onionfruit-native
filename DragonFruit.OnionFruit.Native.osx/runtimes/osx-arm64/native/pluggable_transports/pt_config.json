@@ -2,7 +2,7 @@
   "recommendedDefault" : "obfs4",
   "pluggableTransports" : {
     "lyrebird" : "ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,webtunnel exec ${pt_path}lyrebird",
-    "snowflake" : "ClientTransportPlugin snowflake exec ${pt_path}snowflake-client",
+    "snowflake": "ClientTransportPlugin snowflake exec ${pt_path}lyrebird",
     "conjure" : "ClientTransportPlugin conjure exec ${pt_path}conjure-client -registerURL https://registration.refraction.network/api"
   },
   "bridges" : {
