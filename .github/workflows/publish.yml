@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Sign macOS contents
-        run: find ./DragonFruit.OnionFruit.Native.osx/runtimes -type f ! -name '*.txt' | xargs -I {} codesign --options runtime --force --sign - {}
+        run: find ./DragonFruit.OnionFruit.Native.osx/runtimes -type f ! -name '*.txt' | xargs -I {} codesign --options=runtime --entitlements osx.entitlements --force --sign - {}
 
       - name: Build
         run: dotnet build -c Release -v normal -p:Version=${{ github.ref_name }}

@@ -52,5 +52,8 @@ public static class TorResolver
 }
 ```
 
+#### Notes
+To ease the development experience on macOS, all files are resigned by the build server using a blank certificate and library validation disabled. If redistributing, it is strongly recommended to resign the binaries before distributing and enabling such protections.
+
 ### License
 The project is licensed under the MIT Licence. Please note the Tor is distributed under a different license, which has been provided with the binaries
