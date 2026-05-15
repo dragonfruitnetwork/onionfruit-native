@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)Common.Build.props"/>
+    <Import Project="$(SolutionDir)Common.Build.props" />
 
     <PropertyGroup>
-        <Version>13.5.4</Version>
+        <Version>15.0.15</Version>
         <PackageId>DragonFruit.OnionFruit.Native.osx</PackageId>
     </PropertyGroup>
 
