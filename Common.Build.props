@@ -1,8 +1,9 @@
 <Project>
+
     <PropertyGroup>
         <OutputType>Library</OutputType>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <TargetFramework>netstandard1.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -19,6 +20,10 @@
         <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="."/>
         <None Include="$(SolutionDir)readme.md" Pack="true" PackagePath="."/>
         <None Include="runtimes\**\native\**\*" Pack="true" PackagePath="runtimes"/>
+        <None Include="$(SolutionDir)_._">
+            <Pack>true</Pack>
+            <PackagePath>lib\$(TargetFramework)</PackagePath>
+        </None>
     </ItemGroup>
 
 </Project>
