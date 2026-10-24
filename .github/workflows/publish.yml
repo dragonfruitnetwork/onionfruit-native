@@ -22,15 +22,12 @@ jobs:
       - name: Sign macOS contents
         run: find ./DragonFruit.OnionFruit.Native.osx/runtimes -type f ! -name '*.txt' | xargs -I {} codesign --options=runtime --entitlements osx.entitlements --force --sign - {}
 
-      - name: Build
-        run: dotnet build -c Release -v normal -p:Version=${{ github.ref_name }}
-
       - name: Pack (Beta)
-        run: dotnet pack -c Release --include-symbols --no-build -v normal -o . -p:PackageVersion=${{ github.ref_name }}-beta
+        run: dotnet pack -c Release -v normal -o . -p:PackageVersion=${{ github.ref_name }}-beta
         if: "github.event.release.prerelease"
 
       - name: Pack (Stable)
-        run: dotnet pack -c Release --include-symbols --no-build -v normal -o . -p:PackageVersion=${{ github.ref_name }}
+        run: dotnet pack -c Release -v normal -o . -p:PackageVersion=${{ github.ref_name }}
         if: "!github.event.release.prerelease"
 
       - name: Publish
